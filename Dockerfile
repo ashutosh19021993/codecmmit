@@ -1,20 +1,8 @@
-FROM node:12
-
-# Create app directory
-WORKDIR /usr/src/app
-
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
-
+FROM node:14.15.0
+WORKDIR /app
+COPY package*.json /app/
 RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
-
-# Bundle app source
+COPY . /app
 COPY . .
-
-EXPOSE 8080
-ADD target/order-service.jar order-service.jar 
-CMD [ "node", "server.js" ]
+EXPOSE 8081
+CMD [ "node","app.js"]
