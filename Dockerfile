@@ -4,5 +4,5 @@ COPY package*.json /app/
 RUN npm install
 COPY . /app
 COPY . .
-EXPOSE 8081
+EXPOSE 8082
 CMD [ "node","app.js"]
